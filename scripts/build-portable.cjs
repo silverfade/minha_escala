@@ -1,0 +1,12 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+html = html.replace(/<link rel="stylesheet" href="(src\/[^"]+)">/g, (_, file) => `<style>\n${fs.readFileSync(path.join(root, file), 'utf8')}\n</style>`);
+html = html.replace(/<script src="(src\/[^"]+)"><\/script>/g, (_, file) => `<script>\n${fs.readFileSync(path.join(root, file), 'utf8')}\n</script>`);
+html = html.replace(/src="(assets\/[^" ]+\.svg)"/g, (_, file) => `src="data:image/svg+xml;base64,${fs.readFileSync(path.join(root, file)).toString('base64')}"`);
+fs.writeFileSync(path.join(root, 'Minha Escala - Celular.html'), html, 'utf8');
+const deliveryDir = path.join(root, 'dist');
+fs.mkdirSync(deliveryDir, { recursive: true });
+fs.writeFileSync(path.join(deliveryDir, 'Minha Escala - Celular.html'), html, 'utf8');
+console.log('Versão portátil atualizada. Arquivo para enviar ao celular: dist/Minha Escala - Celular.html');

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minha Escala</string>
+    <color name="icon_background">#064C39</color>
+    <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#064C39</item>
+        <item name="android:navigationBarColor">#F6F8F1</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:colorAccent">#07543F</item>
+        <item name="android:windowBackground">#F0F4EF</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

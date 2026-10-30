@@ -1,0 +1,106 @@
+/* Resumo independente das grades antigas: cada informação ocupa um bloco. */
+.dashboard-grid .overview #scale-facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+#scale-facts .scale-fact {
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #e4ebdf;
+  border-radius: 12px;
+  background: #f7f9f4;
+}
+
+.overview #scale-facts dt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 0 8px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: #526858;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+#scale-facts dt .icon { width: 16px; height: 16px; }
+
+.overview #scale-facts dd {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: #183d2e;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+#scale-facts .scale-fact-model {
+  border-color: #d7e5cd;
+  background: linear-gradient(115deg, #edf5e6, #f6faef);
+}
+
+#overview-model { display: block; font-size: 21px; letter-spacing: -.4px; }
+#scale-facts .fact-caption {
+  display: block;
+  margin-top: 4px;
+  color: #5f715f;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+#scale-facts .period-dates { display: grid; gap: 7px; }
+#scale-facts .period-line { display: flex; align-items: baseline; gap: 9px; }
+#scale-facts .period-label { min-width: 27px; color: #66786a; font-size: 13px; font-weight: 400; }
+#scale-facts time { min-width: 0; font: inherit; }
+
+#scale-facts .holiday-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: #e7f1de;
+  color: #2e603d;
+  font-size: 14px;
+}
+#scale-facts .holiday-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #5b8b42; }
+#scale-facts .holiday-status.is-off { background: #eaeee6; color: #687366; }
+#scale-facts .holiday-status.is-off::before { background: #8f9989; }
+
+.dashboard-grid .overview .scale-card-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: auto 0 0;
+  padding: 16px 0 0;
+  border: 0;
+  color: #627267;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.scale-card-note .icon { width: 16px; height: 16px; margin-top: 2px; }
+.dashboard-grid .overview #scale-card-title { font-size: 19px; }
+
+@media (max-width: 700px) {
+  .dashboard-grid .overview { padding: 18px; }
+  #scale-facts .scale-fact { padding: 13px 14px; }
+  .dashboard-grid .overview .scale-card-note { margin-top: 14px; padding-top: 0; }
+  .overview .list-header .text-button { min-height: 36px; font-size: 12px; }
+}

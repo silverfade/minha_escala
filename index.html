@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#063e31"><title>Minha escala · Planeje suas folgas</title><link rel="stylesheet" href="src/styles.css"><link rel="stylesheet" href="src/scale-card.css"><link rel="stylesheet" href="src/print.css"></head>
+<body>
+<svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v5m8-5v5M4 10h16m-11 4h2m-2 3h5"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3z"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V13m7 7V8m7 12V3"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6m-6 4h6m-6 4h6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><path d="m10 3-.7 3-2 .8L5 5 3 9l2.5 1.5v3L3 15l2 4 2.3-1.8 2 .8.7 3h4l.7-3 2-.8L19 19l2-4-2.5-1.5v-3L21 9l-2-4-2.3 1.8-2-.8-.7-3z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2m0-16-2 2M6 18l-2 2"/></symbol>
+<symbol id="i-palm" viewBox="0 0 24 24"><path d="M11 21c2-4 2-8 1-13M12 8C8 4 4 5 3 9c3-2 6-2 9-1Zm0 0c1-5 5-6 8-3-4 0-6 1-8 3Zm0 0c5-2 8 0 9 4-3-2-6-3-9-4Zm0 0c-5 0-7 3-6 7 1-3 3-5 6-7Z"/></symbol>
+<symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="3"/><path d="M8 7V3h8v4M3 12h18m-9-2v4"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 4 5 5-11 11H4v-5zm-2 2 5 5"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="4" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="20" cy="12" r="1"/></symbol>
+</defs></svg>
+<div class="app-shell app">
+<aside class="sidebar"><a class="brand" href="./index.html"><span class="logo"><svg class="icon"><use href="#i-calendar"/></svg></span><span>minha escala</span></a><nav aria-label="Menu principal">
+<button class="nav-item active" data-view="home"><svg class="icon"><use href="#i-home"/></svg>Início</button>
+<button class="nav-item" data-view="editor"><svg class="icon"><use href="#i-calendar"/></svg>Escala</button>
+</nav><p class="sidebar-note">Seu tempo, organizado.<br>Funciona offline.</p></aside>
+<main class="workspace">
+<p id="recovery-warning" role="alert" aria-atomic="true" hidden></p>
+<p id="save-warning" role="alert" aria-atomic="true" hidden></p>
+<p id="holiday-save-warning" role="alert" aria-atomic="true" hidden></p>
+<section id="dashboard-view" class="view">
+<div class="hero"><img class="landscape" src="assets/landscape.svg" alt="" aria-hidden="true"><div class="mobile-brand brand"><span class="logo"><svg class="icon"><use href="#i-calendar"/></svg></span><span>minha escala</span></div>
+<div class="hero-copy"><p>Olá! Que bom ter você aqui.</p><h1>Mais clareza<br><em>na sua rotina.</em></h1><p class="hero-description">Descubra seus próximos dias de folga<br>e planeje seu tempo com mais tranquilidade.</p><button class="hero-edit" data-view="editor"><svg class="icon"><use href="#i-calendar"/></svg><span id="hero-action-label">Montar minha escala</span></button></div>
+<div class="summary"><div><span class="eyebrow" id="summary-eyebrow">NO SEU PERÍODO ATUAL</span><h2 id="total">— dias de folga</h2><p id="range"></p><span id="model-badge" class="model-badge"></span></div><svg class="icon summary-sun" aria-hidden="true"><use href="#i-sun"/></svg></div>
+<div class="month-stats"><div class="stat"><span class="stat-icon"><svg class="icon"><use href="#i-palm"/></svg></span><div><strong id="month-rest">—</strong><span>dias de folga<br><span class="stat-month">no mês</span></span></div></div><div class="stat"><span class="stat-icon"><svg class="icon"><use href="#i-case"/></svg></span><div><strong id="month-work">—</strong><span>dias de trabalho<br><span class="stat-month">no mês</span></span></div></div></div>
+</div>
+<div class="details-toolbar"><button class="icon-button" data-view="home" aria-label="Voltar ao início"><svg class="icon"><use href="#i-back"/></svg></button><span>Detalhes do mês</span></div>
+<div class="dashboard-grid">
+<section class="panel calendar"><div class="calendar-top"><h2 id="month-title"></h2><div class="navigation"><button id="prev" aria-label="Mês anterior">‹</button><button id="next" aria-label="Próximo mês">›</button></div></div><div class="weekdays"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div><div id="calendar" class="grid"></div><div class="legend"><span id="legend-rest"><i></i>Folga</span><span id="legend-work"><i class="work-dot"></i>Trabalho</span><span id="legend-empty" hidden><i class="unconfigured-dot"></i>Sem escala</span><span><i class="today-dot"></i>Hoje</span><span id="holiday-legend"><b>◆</b>Feriado nacional</span></div><button class="mobile-detail-link" data-view="details">Ver folgas e detalhes do mês <span>→</span></button><button class="mobile-pdf-link" data-export><svg class="icon"><use href="#i-download"/></svg>Salvar minha escala em PDF</button></section>
+<section class="panel upcoming"><div class="list-header"><div><span class="eyebrow">SUAS PRÓXIMAS PAUSAS</span><h2>Folgas do mês</h2></div><button class="text-button" data-export><svg class="icon"><use href="#i-download"/></svg>Salvar PDF</button></div><div id="rest-list"></div><button id="empty-setup" class="inline-setup" data-view="editor" hidden>Montar minha escala <svg class="icon"><use href="#i-arrow"/></svg></button><div id="holiday-list" class="holiday-list"></div></section>
+<section class="panel overview" aria-labelledby="scale-card-title">
+  <div class="list-header"><h2 id="scale-card-title">Sua escala</h2><button class="text-button" data-view="editor"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg>Editar</button></div>
+  <dl id="scale-facts">
+    <div class="scale-fact scale-fact-model">
+      <dt><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Modelo da escala</dt>
+      <dd><span id="overview-model"></span><span id="overview-model-description" class="fact-caption"></span></dd>
+    </div>
+    <div class="scale-fact">
+      <dt><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Folga de referência</dt>
+      <dd id="overview-anchor"></dd>
+    </div>
+    <div class="scale-fact">
+      <dt><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>Período calculado</dt>
+      <dd id="overview-period">
+        <span id="period-dates" class="period-dates" hidden>
+          <span class="period-line"><span class="period-label">De</span><time id="overview-start"></time></span>
+          <span class="period-line"><span class="period-label">Até</span><time id="overview-end"></time></span>
+        </span>
+        <span id="period-empty">Escolha até quando calcular.</span>
+      </dd>
+    </div>
+    <div class="scale-fact scale-fact-holidays">
+      <dt><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>Feriados nacionais</dt>
+      <dd><span id="overview-holidays" class="holiday-status"></span></dd>
+    </div>
+  </dl>
+  <p class="overview-note scale-card-note"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span>O ciclo continua entre meses e anos.</span></p>
+</section>
+</section>
+<section id="editor-view" class="view" hidden><div class="editor-shell"><button class="icon-button editor-close" data-view="home" aria-label="Voltar ao início"><svg class="icon"><use href="#i-back"/></svg></button>
+<div class="editor-heading"><span class="eyebrow">PERSONALIZE SUA PREVISÃO</span><h1>Monte sua escala</h1><p>Escolha o ciclo, informe uma folga que você já conhece e defina até quando calcular.</p></div>
+<form id="schedule-form"><input type="hidden" id="model" value="alternating">
+<fieldset class="model-picker"><legend>1. Escolha seu modelo</legend><div class="model-options">
+<label class="model-option"><input type="radio" name="model-choice" value="alternating" checked><span><strong>6 / 1 → 6 / 2</strong><small>Folgas alternadas</small><span class="model-explanation">6 dias trabalhando, folga 1; depois mais 6, folga 2.</span></span></label>
+<label class="model-option"><input type="radio" name="model-choice" value="6-1"><span><strong>6 / 1</strong><small>1 dia de folga</small><span class="model-explanation">Repete 6 dias de trabalho e 1 de folga.</span></span></label>
+<label class="model-option"><input type="radio" name="model-choice" value="6-2"><span><strong>6 / 2</strong><small>2 dias de folga</small><span class="model-explanation">Repete 6 dias de trabalho e 2 de folga.</span></span></label>
+<label class="model-option"><input type="radio" name="model-choice" value="5-2"><span><strong>5 / 2</strong><small>2 dias de folga</small><span class="model-explanation">Repete 5 dias de trabalho e 2 de folga.</span></span></label>
+<label class="model-option"><input type="radio" name="model-choice" value="4-2"><span><strong>4 / 2</strong><small>2 dias de folga</small><span class="model-explanation">Repete 4 dias de trabalho e 2 de folga.</span></span></label>
+<label class="model-option"><input type="radio" name="model-choice" value="custom"><span><strong>Personalizado</strong><small>Monte seu ciclo</small><span class="model-explanation">Escolha a quantidade de dias de trabalho e de folga.</span></span></label>
+</div></fieldset>
+<div class="editor-fields"><section class="editor-section"><div class="editor-section-title"><span>2</span><div><h2>Folga de referência</h2><p>Por onde sua escala começa?</p></div></div><div class="form-fields"><div class="field full"><label for="anchor">Primeiro dia da folga</label><input type="date" id="anchor" required></div><div class="field"><label for="rest" id="rest-label">Folga inicial (1 ou 2)</label><input id="rest" type="number" min="1" max="2" value="1" required></div><div class="field"><label for="work">Dias de trabalho</label><input id="work" type="number" min="1" max="31" value="6" required></div></div><div class="rule"><span>↻</span><p id="rule-text"></p></div></section>
+<section class="editor-section"><div class="editor-section-title"><span>3</span><div><h2>Período e opções</h2><p>Escolha até qual mês deseja visualizar.</p></div></div>
+<div class="field month-field" id="until-field">
+  <label for="until">Calcular até o fim de</label>
+  <div class="month-input-row">
+    <input type="text" id="until" placeholder="MM/AAAA" maxlength="7" required aria-describedby="until-help" pattern="(0[1-9]|1[0-2])/[0-9]{4}|[0-9]{4}-(0[1-9]|1[0-2])">
+    <button type="button" id="until-toggle" class="month-toggle" aria-label="Escolher mês e ano no calendário" aria-controls="until-picker" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Calendário</span></button>
+  </div>
+  <p id="until-help" class="month-help">Digite mês/ano (ex.: 12/2027) ou use o calendário.</p>
+  <div id="until-picker" class="month-picker" role="group" aria-labelledby="until-picker-label" hidden>
+    <div class="month-picker-heading"><strong id="until-picker-label">Escolha o mês final</strong><button type="button" id="until-close" class="month-close">Fechar</button></div>
+    <div class="month-picker-year">
+      <button type="button" id="until-prev-year" aria-label="Ano anterior"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+      <label for="until-year">Ano<input id="until-year" type="number" min="0" max="9999" step="1" disabled></label>
+      <button type="button" id="until-next-year" aria-label="Próximo ano"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+    <div id="until-months" class="month-picker-months"></div>
+  </div>
+</div>
+<label class="holiday-toggle"><span>Marcar feriados nacionais<small>Informativos; não alteram a escala.</small></span><input type="checkbox" id="show-holidays" checked><span class="switch" aria-hidden="true"></span></label><p class="option-note">A contagem segue continuamente entre meses e anos. Feriados estaduais, municipais e pontos facultativos não estão incluídos.</p></section></div>
+<p id="error" role="alert"></p><div class="editor-actions"><p>Suas configurações ficam salvas neste navegador quando disponível.</p><button type="submit" class="primary">Calcular minha escala<svg class="icon"><use href="#i-arrow"/></svg></button></div></form></div></section>
+</main>
+<nav class="bottom-nav" aria-label="Navegação do aplicativo"><button class="active" data-view="home"><svg class="icon"><use href="#i-home"/></svg>Início</button><button data-view="editor"><svg class="icon"><use href="#i-calendar"/></svg>Escala</button><button data-view="details"><svg class="icon"><use href="#i-list"/></svg>Detalhes</button></nav>
+</div><div id="print-report"></div><script src="src/schedule.js"></script><script src="src/holidays.js"></script><script src="src/app.js"></script>
+</body></html>
+
+
+
