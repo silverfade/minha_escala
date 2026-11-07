@@ -112,3 +112,5 @@
 .month-picker button:focus-visible,.month-toggle:focus-visible{outline:2px solid #07543f;outline-offset:3px}
 .month-picker-year button:disabled{opacity:.45;cursor:default}
 @media(max-width:370px){.month-toggle span{display:none}.month-toggle{width:46px;padding:10px}.month-picker{padding:10px}.month-picker-months button{font-size:12px}}
+
+#month-title{text-transform:none}

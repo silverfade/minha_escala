@@ -6,6 +6,10 @@ O Minha Escala parte de uma folga conhecida e repete o ciclo de trabalho informa
 
 **Projeto pessoal em evolução, desenvolvido com apoio do Codex.** A previsão é feita por um algoritmo determinístico em JavaScript; não utiliza um modelo de inteligência artificial para calcular a escala.
 
+**Demonstração:** [abrir o Minha Escala](https://silverfade.github.io/minha_escala/)
+
+![Tela inicial do Minha Escala com calendário e folgas de exemplo](assets/tela.png)
+
 ## O que você pode fazer
 
 - Configurar ciclos fixos, folgas alternadas ou um ciclo personalizado.
@@ -34,15 +38,15 @@ A versão web não exige instalação de pacotes, servidor, conta ou conexão co
 | 6/1, 6/2, 5/2 e 4/2 | Repete a quantidade indicada de dias de trabalho e de folga. |
 | Personalizado | Ciclo fixo com 1 a 31 dias de trabalho e 1 a 31 dias de folga. |
 
-Por exemplo, com referência em **08/10/2026**, uma folga inicial de um dia e seis dias de trabalho no modo alternado:
+Por exemplo, com referência em **12/10/2026**, uma folga inicial de um dia e seis dias de trabalho no modo alternado:
 
 | Datas | Situação |
 |---|---|
-| 08/10 | Folga |
-| 09 a 14/10 | Trabalho |
-| 15 e 16/10 | Folga |
-| 17 a 22/10 | Trabalho |
-| 23/10 | Folga |
+| 12/10 | Folga |
+| 13 a 18/10 | Trabalho |
+| 19 e 20/10 | Folga |
+| 21 a 26/10 | Trabalho |
+| 27/10 | Folga |
 
 O ciclo segue continuamente: não reinicia na segunda-feira nem na virada do mês. A referência é incluída; dias anteriores a ela ficam sem classificação. O cálculo termina no último dia do mês final, cortando blocos que ultrapassarem esse limite.
 

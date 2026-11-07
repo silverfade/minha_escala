@@ -173,7 +173,7 @@
   });
   function render() {
     const first = Schedule.parseDate(visibleMonth + '-01');
-    $('month-title').textContent = format(visibleMonth + '-01', { month: 'long', year: 'numeric' });
+    const monthTitle = format(visibleMonth + '-01', { month: 'long', year: 'numeric' }); $('month-title').textContent = monthTitle.charAt(0).toUpperCase() + monthTitle.slice(1);
     const monthEnd = new Date(first); monthEnd.setUTCMonth(monthEnd.getUTCMonth() + 1); monthEnd.setUTCDate(0);
     document.querySelectorAll('.stat-month').forEach(label => { label.textContent = `em ${format(visibleMonth + '-01', { month: 'long' })}`; });
     $('holiday-legend').hidden = !$('show-holidays').checked;
